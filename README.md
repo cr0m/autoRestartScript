@@ -1,5 +1,7 @@
 # autoRestartScript
-Modify running script quicker. Run autoRestartScript while editing to auto kill script and re start it after edit/save
+Modify a running script quicker. Removes the process of stopping & starting a script after editing & saving it.
+
+Run autoRestart.py while editing to auto kill script and re start it after an edit/save. Set path and filename.
 
 ```python3
 #!/usr/bin/python3
