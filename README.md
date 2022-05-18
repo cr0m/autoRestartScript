@@ -1,5 +1,5 @@
-# autoRestartScript
-Modify a running script quicker. Removes the process of stopping & starting a script after editing & saving it.
+# autoRestartScript -- Automatic script restarting.
+Modify a running script quicker. This removes the process of stopping & starting a script after editing & saving it.
 
 Run autoRestart.py while editing to auto kill script and re start it after an edit/save. Set path and filename.
 
