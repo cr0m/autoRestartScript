@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 import time
-import subprocessimport colorama
+import subprocess
+import colorama
 from colorama import Fore, Style
 
 filename = "/path/to/script.py"
