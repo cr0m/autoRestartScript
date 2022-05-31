@@ -1,30 +1,30 @@
 #!/usr/bin/python3
 
-import colorama
-from colorama import Fore, Style
-import subprocess
 import time
+import subprocessimport colorama
+from colorama import Fore, Style
 
-fntc_path = "/path/to/script/"
-filename_to_check = "script.py"
+filename = "/path/to/script.py"
 
-global saved_timestamp
 saved_timestamp = 0
 while True:
-    timestamp = subprocess.getoutput("ls -lsa %s --full-time | cut -d\" \" -f8" % filename_to_check)
+    timestamp = subprocess.getoutput("ls -lsa %s --full-time | cut -d\" \" -f8" % filename)
+    ps = subprocess.getoutput("ps aux | grep -m 1 '%s' | tr -s ' ' | cut -d ' ' -f2" % filename) # UPGRADE
+
     if((saved_timestamp != 0) and (saved_timestamp != timestamp)):
         print (Fore.RED + "KILL IT, TIMESTAMP CHANGED!!")
-        subprocess.run(["killall", "screen"])
+        subprocess.run(["kill", "-9", ps])
+        subprocess.run(["screen", "-wipe"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         print (Fore.RED + "RESTARTING!!!!")
         time.sleep(1)
-        subprocess.run(["screen", "-S", "m", "-dm", fntc_path + filename_to_check])
+        subprocess.run(["screen", "-S", "m", "-dm", filename])
+
     else:
        print(Fore.GREEN + "Status: all good, move along")
 
-    psf = subprocess.getoutput("ps aux | grep -m 1 'bot/M'")
-    print (Fore.GREEN + "saved timestamp " + str(saved_timestamp))
-    print ("new timestamp " + str(timestamp))
-    print ("" + str(psf))
-    print ("\n\n")
+    psf = subprocess.getoutput("ps aux | grep -m 1 '%s'" % filename)
+    print (Fore.GREEN + "Saved timestamp " + str(saved_timestamp))
+    print ("New timestamp " + str(timestamp))
+    print (str(psf) + "\n\n")
     saved_timestamp = timestamp
     time.sleep(2)
