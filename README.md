@@ -8,7 +8,6 @@ Run autoRestart.py while editing to auto kill script and re start it after an ed
 
 import time
 import subprocess
-import colorama
 from colorama import Fore, Style
 
 filename = "/path/to/script.py"
